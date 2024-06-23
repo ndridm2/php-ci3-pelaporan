@@ -1,0 +1,17 @@
+_____________login erp system__________________________
+
+1. Admin
+    username : admin
+    password : 12345
+
+2. Ddpp
+    username : dpp
+    password : 12345
+
+3. Pastor
+    username : pastor
+    password : 12345
+
+4. Jemaat
+    username : maria, thalia
+    password : 12345

@@ -1,0 +1,24 @@
+/* Basic print styles */
+@page {
+    size: A4; /* Set paper size to A4 */
+    margin: 20mm; /* Set margins for the page */
+}
+
+body {
+    font-family: sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
