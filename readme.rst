@@ -1,10 +1,7 @@
 ###################
 Release Information
 ###################
-Program skripsi agust 2023
-# maria
-# crurch service
-# multi user
+
 
 *******************
 FrameWork
