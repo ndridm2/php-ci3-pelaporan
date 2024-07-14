@@ -32,7 +32,7 @@ class Dashboard extends CI_Controller
 		$data['itemLaporan'] = $this->model_pelaporan->countLaporan();
         
         $this->load->view('templates/header', $data);
-        $this->load->view('guru/sidebar',);
+        $this->load->view('guru/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('guru/dashboard', $data);
         $this->load->view('templates/footer');
