@@ -41,9 +41,9 @@
 							<th class="text-center">NIP</th>
 							<th class="text-center">Nama Guru</th>
 							<th class="text-center">Tanggal Lahir</th>
-							<th class="text-center">Alamat</th>
+							<th class="text-center">Jenis Kelamin</th>
 							<th class="text-center">Pendidikan</th>
-							<th class="text-center">Telepon</th>
+							<th class="text-center">Mata Pelajaran</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,10 +53,10 @@
 								<td class="text-center"><?= $no++ ?></td>
 								<td class="text-center"><?= $i['nip'] ?></td>
 								<td class="text-center"><?= $i['username'] ?></td>
-								<td class="text-center"><?= $i['tanggal_lahir'] ?></td>
-								<td class="text-center"><?= $i['alamat'] ?></td>
+								<td class="text-center"><?= date('d-m-Y', strtotime($i['tanggal_lahir'])) ?></td>
+								<td class="text-center"><?= $i['jenis_kelamin'] ?></td>
 								<td class="text-center"><?= $i['pendidikan'] ?></td>
-								<td class="text-center"><?= $i['hp'] ?></td>
+								<td class="text-center"><?= $i['mapel'] ?></td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

@@ -14,22 +14,16 @@
 
 	<div class="card">
 		<div class="card-header text-center">
-			<h5 class="card-title">Kehadiran <?= date('d-M-Y') ?></h5>
+			<h5 class="card-title">Kehadiran <?= date('d M Y') ?></h5>
 		</div>
 		<div class="card-body text-center">
 
 			<p class="card-text">Input data kehadiran pada form yang tersedia, pilih status kehadiran!</p>
-			<button class="btn btn-primary" data-toggle="modal" data-target="#tambah_data">Masukkan Kehadiran</button>
-			<script type="text/javascript">
-				$(document).ready(function() {
-					$('#tambah_data').on('hidden.bs.modal', function() {
-						$(this).find('button[type=submit]').prop('disabled', false); // Enable submit button after modal is hidden
-					});
-				});
-			</script>
+			<button class="btn btn-primary" id="ons" data-toggle="modal" data-target="#tambah_data">Masukkan Kehadiran</button>
 			<p></p>
 			<p></p>
-			<h6><?= date('d-m-Y', strtotime($kehadiran['tanggal'])) ?></h6>
+			<h6>Kehadiran Terakhir : <?= date('d-m-Y', strtotime($kehadiran['tanggal'])) ?></h6>
+			<h6>Status :</h6>
 			<h5><?= $kehadiran['status'] ?></h5>
 		</div>
 	</div>
@@ -45,7 +39,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="<?= base_url() . 'guru/kehadiran/tambah'; ?>" method="post" enctype="multipart/form-data">
+					<form action="<?= base_url() . 'guru/kehadiran/tambah'; ?>" method="post" enctype="multipart/form-data" id="form_kehadiran">
 
 						<div class="form-group">
 							<label class="mr-sm-2" for="inlineFormCustomSelect">Guru</label>
@@ -99,6 +93,51 @@
 		</div>
 	</div>
 	<!-- end -->
+
+	<script>
+		const submitButton = document.getElementById('ons'); // Dapatkan tombol submit
+		let isSubmitted = false; // Variabel untuk menandai status penekanan
+
+		submitButton.addEventListener('click', function() {
+			if (isSubmitted) {
+				// Jika sudah ditekan, nonaktifkan tombol
+				submitButton.disabled = true;
+			} else {
+				// Jika belum ditekan, aktifkan tombol
+				submitButton.disabled = false;
+				// Tandai tombol sebagai "sudah ditekan"
+				isSubmitted = true;
+			}
+		});
+
+		// // Simpan nilai isSubmitted
+		// document.getElementById('ons').addEventListener('click', function(e) {
+		// 	e.preventDefault(); // Mencegah submit default
+		// 	document.getElementById('ons').setAttribute('disabled', true); // Nonaktifkan permanen tombol submit
+		// 	this.submit(); // Submit form
+
+		// 	// Simpan isSubmitted ke localStorage
+		// 	localStorage.setItem('isSubmitted', true);
+		// });
+
+		// // Hapus nilai isSubmitted saat berganti tanggal
+		// const lastSubmittedDate = localStorage.getItem('itemData');
+		// const currentDate = Date.now();
+
+		// if (lastSubmittedDate) {
+		// 	const lastSubmittedDateObj = new Date(lastSubmittedDate);
+		// 	const currentDay = new Date(currentDate).getDate();
+		// 	const lastSubmittedDay = lastSubmittedDateObj.getDate();
+
+		// 	if (currentDay !== lastSubmittedDay) {
+		// 		localStorage.removeItem('isSubmitted');
+		// 		localStorage.setItem('lastSubmittedDate', currentDate);
+		// 	}
+		// } else {
+		// 	localStorage.setItem('lastSubmittedDate', currentDate);
+		// }
+	</script>
+
 
 </div>
 <!-- /.container-fluid -->

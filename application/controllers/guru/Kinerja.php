@@ -30,16 +30,10 @@ class Kinerja extends CI_Controller
 		)->row_array();
 
 		if ($data['item']) {
-			$data['item']['penilaian'];
-			$data['item']['deskripsi'];
+			$data['item']['descripsion'];
 		} else {
-			// Handle null data case
-			// echo "No laporan data for this user";
-			// or set default values for data['item']
 			$data['item'] = [
-				'penilaian' => 'Belum Ada Penilaian',
-				'deskripsi' => 'Belum Ada Deskripsi',
-				// ... other default values
+				'descripsion' => 'Belum Ada Deskripsi',
 			];
 		}
 

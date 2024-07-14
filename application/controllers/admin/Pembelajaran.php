@@ -19,7 +19,8 @@ class Pembelajaran extends CI_Controller
 		$data['active_link'] = $this->uri->segment(2);
         $data['user'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
-        $data['item'] = $this->model_pembelajaran->tampil_data()->result_array();
+        $data['item'] = $this->model_pembelajaran->tampil_all_data();
+		$data['relasi'] = $this->db->get_where('guru', 'role = 3')->result();
 
         $this->load->view('templates/header', $data);
         $this->load->view('admin/sidebar');
@@ -34,12 +35,14 @@ class Pembelajaran extends CI_Controller
         $mapel              = $this->input->post('mapel');
         $jam_pelajaran      = $this->input->post('jam_pelajaran');
         $deskripsi          = $this->input->post('deskripsi');
+        $guru_id          	= $this->input->post('guru_id');
        
         $data = array(
             'pembelajaran_id'   => $pembelajaran_id,
             'mapel'         	=> $mapel,
             'jam_pelajaran'     => $jam_pelajaran,
             'deskripsi'         => $deskripsi,
+            'guru_id'         	=> $guru_id,
            
         );
         $this->model_pembelajaran->tambah_data($data, 'pembelajaran');
@@ -52,6 +55,8 @@ class Pembelajaran extends CI_Controller
         $mapel              = $this->input->post('mapel');
         $jam_pelajaran      = $this->input->post('jam_pelajaran');
         $deskripsi          = $this->input->post('deskripsi');
+		$guru_id          	= $this->input->post('guru_id');
+		$id_pembelajaran    = $this->input->post('id_pembelajaran');
         
 
         $data = array(
@@ -59,24 +64,25 @@ class Pembelajaran extends CI_Controller
             'mapel'         	=> $mapel,
             'jam_pelajaran'     => $jam_pelajaran,
             'deskripsi'         => $deskripsi,
+			'guru_id'         	=> $guru_id,
            
         );
 
-        $where = array('pembelajaran_id'   => $pembelajaran_id);
+        $where = array('id_pembelajaran'   => $id_pembelajaran);
         $this->model_pembelajaran->update_data($where, $data, 'pembelajaran');
         redirect('admin/pembelajaran/index');
     }
 
-    public function hapus($pembelajaran_id)
+    public function hapus($id_pembelajaran)
     {
-        $where = array('pembelajaran_id' => $pembelajaran_id);
+        $where = array('id_pembelajaran' => $id_pembelajaran);
         $this->model_pembelajaran->hapus_data($where, 'pembelajaran');
         redirect('admin/pembelajaran/index');
     }
 
 	public function print()
     {
-		$data['item'] = $this->model_pembelajaran->tampil_data()->result_array();
+		$data['item'] = $this->model_pembelajaran->tampil_all_data();
 
         $this->load->view('admin/pembelajaranPrint', $data);
     }

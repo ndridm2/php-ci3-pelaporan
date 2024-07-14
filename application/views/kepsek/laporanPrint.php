@@ -27,7 +27,7 @@
 			</div>
 
 			<div class="col-6 text-end">
-				<p>Kalola Data Pelaporan</p>
+				<p>Data Pelaporan</p>
 				<p><?= date('d m Y - H:i'); ?></p>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 							<th class="text-center">Periode Laporan</th>
 							<th class="text-center">NIP</th>
 							<th class="text-center">Nama Guru</th>
-							<th class="text-center">Penilaian</th>
+							<th class="text-center">Mapel</th>
 							<th class="text-center">Deskripsi</th>
 						</tr>
 					</thead>
@@ -53,8 +53,8 @@
 								<td class="text-center"><?= date(' d M Y', strtotime($i['periode_laporan'])) ?></td>
 								<td class="text-center"><?= $i['nip'] ?></td>
 								<td class="text-center"><?= $i['username'] ?></td>
-								<td class="text-center"><?= $i['penilaian'] ?></td>
-								<td class="text-center"><?= $i['deskripsi'] ?></td>
+								<td class="text-center"><?= $i['mapel'] ?></td>
+								<td class="text-center"><?= $i['descripsion'] ?></td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

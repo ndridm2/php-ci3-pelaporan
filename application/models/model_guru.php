@@ -12,8 +12,14 @@ class Model_Guru extends CI_Model
 	}
 	public function tampil_dataguru()
 	{
-		return $this->db->get_where('guru', 'role = 3');
-		return $this->db->get()->num_rows();
+		$this->db->select('*');
+		$this->db->from('guru');
+		$this->db->where('role = 3');
+		$this->db->order_by('id', 'DESC');
+		return $this->db->get()->result_array();
+
+		// return $this->db->get_where('guru', 'role = 3');
+		// return $this->db->get()->num_rows();
 	}
 
 	// tambah
@@ -45,8 +51,16 @@ class Model_Guru extends CI_Model
 	public function countGuru()
 	{
 		$this->db->select('*');
-        $this->db->from('guru');
-        $this->db->where('role', 3);
-        return $this->db->get()->num_rows();
+		$this->db->from('guru');
+		$this->db->where('role', 3);
+		return $this->db->get()->num_rows();
 	}
+
+	public function get_gender_data() {
+        $this->db->select('COUNT(*) AS count, jenis_kelamin');
+        $this->db->from('guru');
+        $this->db->group_by('jenis_kelamin');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

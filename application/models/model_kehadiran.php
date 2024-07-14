@@ -11,6 +11,7 @@ class Model_kehadiran extends CI_Model
 		$this->db->from('kehadiran');
 		$this->db->join('guru', 'kehadiran.guru_id = guru.id');
 		$this->db->where('role = 3');
+		$this->db->order_by('kehadiran_id', 'DESC');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -48,9 +49,9 @@ class Model_kehadiran extends CI_Model
         SELECT *
         FROM kehadiran k
         JOIN guru g ON k.guru_id = g.id
-        WHERE g.role = 3;
+        WHERE g.role = 3
+		ORDER BY kehadiran_id DESC
     ");
-
 		if ($query->num_rows() > 0) {
 			return $query->result_array(); // Return results as an associative array
 		} else {
@@ -60,9 +61,13 @@ class Model_kehadiran extends CI_Model
 
 	public function countKehadiran()
 	{
+		$tanggalHariIni = date('Y-m-d');
+
 		$this->db->select('*');
-        $this->db->from('kehadiran');
-        return $this->db->get()->num_rows();
+		$this->db->from('kehadiran');
+		$this->db->where('tanggal = CURDATE()');
+		$this->db->where('status', 'Hadir');
+		return $this->db->get_where()->num_rows();
 	}
 
 }

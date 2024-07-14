@@ -20,14 +20,14 @@
 
 		<div class="row mt-3">
 			<div class="col-6">
-				<p>Nama: Bambang Raharjo</p>
+				<p>Nama: Staff TU Sekolah</p>
 				<p>NIP: 040815001235</p>
-				<p>Jabatan: Staff Sekolah</p>
+				<p>Jabatan: Pegawai</p>
 				<p>Periode: <?= date('M Y') ?></p>
 			</div>
 
 			<div class="col-6 text-end">
-				<p>Kalola Data Kegiatan Pembelajaran</p>
+				<p>Laporan Data Kegiatan Pembelajaran</p>
 				<p><?= date('d m Y - H:i'); ?></p>
 			</div>
 		</div>
@@ -38,6 +38,8 @@
 					<thead>
 						<tr>
 							<th class="text-center">No</th>
+							<th class="text-center">NIP Guru</th>
+							<th class="text-center">Nama Guru</th>
 							<th class="text-center">Pelajaran ID</th>
 							<th class="text-center">Mata Pelajaran</th>
 							<th class="text-center">Jam Pelajaran</th>
@@ -49,6 +51,8 @@
 						foreach ($item as $i) : ?>
 							<tr>
 								<td class="text-center"><?= $no++ ?></td>
+								<td class="text-center"><?= $i['nip'] ?></td>
+								<td class="text-center"><?= $i['username'] ?></td>
 								<td class="text-center"><?= $i['pembelajaran_id'] ?></td>
 								<td class="text-center"><?= $i['mapel'] ?></td>
 								<td class="text-center"><?= $i['jam_pelajaran'] ?></td>

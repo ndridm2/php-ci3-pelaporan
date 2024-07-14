@@ -1,9 +1,9 @@
 <?php
+ob_start();
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -22,6 +22,9 @@ class Auth extends CI_Controller
         } else {
             $this->_login();
         }
+
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Silahkan Login</div>');
     }
 
     public function _login()
@@ -66,13 +69,13 @@ class Auth extends CI_Controller
             $this->load->view('login', $data);
         } else {
             $data = [
-                'username'  => htmlspecialchars($this->input->post('nip', true)),
+                'nip'  		=> htmlspecialchars($this->input->post('nip', true)),
                 'username'  => htmlspecialchars($this->input->post('username', true)),
                 'password'  => $this->input->post('password'),
                 'role'      => 3
             ];
 
-            $this->model_user->tambah_data($data, 'guru');
+            $this->model_guru->tambah_data($data, 'guru');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Berhasil Membuat Akun! Silahkan Login</div>');
             redirect('Auth');

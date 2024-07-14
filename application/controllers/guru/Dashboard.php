@@ -22,6 +22,14 @@ class Dashboard extends CI_Controller
         $data['user']       = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         $data['item']       = $this->model_pembelajaran->tampil_data()->result_array();
+		$data['relasi'] 	= $this->db->get_where('guru', 'role = 3')->result();
+
+		$data['item'] = $this->db->query("SELECT * FROM pembelajaran
+		WHERE guru_id = '" . $data['user']['id'] . "' ORDER BY mapel DESC")->
+		result_array();
+
+		$data['itemKehadiran'] = $this->model_kehadiran->countKehadiran();
+		$data['itemLaporan'] = $this->model_pelaporan->countLaporan();
         
         $this->load->view('templates/header', $data);
         $this->load->view('guru/sidebar',);

@@ -23,7 +23,7 @@
 						<th class="text-center">NIP</th>
 						<th class="text-center">Nama Guru</th>
 						<th class="text-center">Status</th>
-						<th class="text-center" width="8%"></th>
+						<th class="text-center" width="8%">action</th>
 					</tr>
 				</thead>
 				<tbody>

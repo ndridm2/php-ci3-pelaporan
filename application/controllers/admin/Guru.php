@@ -21,7 +21,7 @@ class Guru extends CI_Controller
 		$data['active_link'] = $this->uri->segment(2);
 		$data['user'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
-		$data['item'] = $this->model_guru->tampil_dataGuru()->result_array();
+		$data['item'] = $this->model_guru->tampil_dataGuru();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('admin/sidebar');
@@ -35,9 +35,9 @@ class Guru extends CI_Controller
 		$id					= $this->input->post('id');
 		$nip				= $this->input->post('nip');
 		$username       	= $this->input->post('username');
-		$alamat       		= $this->input->post('alamat');
-		$hp       			= $this->input->post('hp');
+		$mapel       		= $this->input->post('mapel');
 		$tanggal_lahir      = $this->input->post('tanggal_lahir');
+		$jenis_kelamin      = $this->input->post('jenis_kelamin');
 		$pendidikan       	= $this->input->post('pendidikan');
 		$password       	= $this->input->post('password');
 		$role       		= $this->input->post('role');
@@ -47,9 +47,9 @@ class Guru extends CI_Controller
 			'id'        		=> $id,
 			'nip'        		=> $nip,
 			'username'        	=> $username,
-			'alamat'        	=> $alamat,
-			'hp'        		=> $hp,
+			'mapel'        		=> $mapel,
 			'tanggal_lahir'     => $tanggal_lahir,
+			'jenis_kelamin'     => $jenis_kelamin,
 			'pendidikan'        => $pendidikan,
 			'password'        	=> $password,
 			'role'        		=> $role,
@@ -64,9 +64,9 @@ class Guru extends CI_Controller
 		$id					= $this->input->post('id');
 		$nip				= $this->input->post('nip');
 		$username       	= $this->input->post('username');
-		$alamat       		= $this->input->post('alamat');
-		$hp       			= $this->input->post('hp');
+		$mapel       		= $this->input->post('mapel');
 		$tanggal_lahir      = $this->input->post('tanggal_lahir');
+		$jenis_kelamin      = $this->input->post('jenis_kelamin');
 		$pendidikan       	= $this->input->post('pendidikan');
 		$password       	= $this->input->post('password');
 		$role       		= $this->input->post('role');
@@ -75,9 +75,9 @@ class Guru extends CI_Controller
 			'id'        		=> $id,
 			'nip'        		=> $nip,
 			'username'        	=> $username,
-			'alamat'        	=> $alamat,
-			'hp'        		=> $hp,
+			'mapel'        		=> $mapel,
 			'tanggal_lahir'     => $tanggal_lahir,
+			'jenis_kelamin'     => $jenis_kelamin,
 			'pendidikan'        => $pendidikan,
 			'password'        	=> $password,
 			'role'        		=> $role,
@@ -99,7 +99,7 @@ class Guru extends CI_Controller
 
 	public function print()
     {
-        $data['item'] = $this->model_guru->tampil_dataGuru()->result_array();
+        $data['item'] = $this->model_guru->tampil_dataGuru();
 
         $this->load->view('admin/guruPrint', $data);
     }

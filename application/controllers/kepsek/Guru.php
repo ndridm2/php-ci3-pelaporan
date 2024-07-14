@@ -21,7 +21,7 @@ class Guru extends CI_Controller
 		$data['active_link'] = $this->uri->segment(2);
 		$data['user'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
-		$data['item'] = $this->model_guru->tampil_dataGuru()->result_array();
+		$data['item'] = $this->model_guru->tampil_dataGuru();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('kepsek/sidebar');

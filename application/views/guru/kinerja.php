@@ -8,25 +8,31 @@
 	<!-- Page Heading -->
 	<div class="mt-5"></div>
 
-	<div class="row">
+	<div class="row ml-1">
 
-	</div>
-
-	<!-- table -->
-	<div class="card shadow p-4 col-xl-12 col-md-6 mb-10">
-		<div class="card" style="width: 100rem;">
-			<div class="card-header">
-				Data Guru
+		<div class="card shadow p-4 col-xl-4 col-md-4 mb-10" style="width: 18rem;">
+			<img src="<?= base_url('assets/img/undraw_male_avatar_g98d.svg'); ?>" class="card-img-top" width="100px" height="150px" alt="...">
+			<div class="card-body">
+				<p class="card-text">Some quick example text to build on the card title and make up the <?= $user['username']; ?>.</p>
 			</div>
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item">NIP : <?= $user['nip']; ?> </li>
-				<li class="list-group-item">Nama : <?= $user['username']; ?></li>
-				
-				<li class="list-group-item">Penilaian : <?= $item['penilaian']; ?></li>
-				<li class="list-group-item">Deskripsi : <?= $item['deskripsi']; ?></li>
-			</ul>
+		</div>
+		<!-- table -->
+		<div class="card shadow p-4 col-xl-7 col-md-8 mb-10">
+			<div class="card mt-4">
+				<div class="card-header">
+					Data Guru
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">NIP : <?= $user['nip']; ?> </li>
+					<li class="list-group-item">Nama : <?= $user['username']; ?></li>
+					<li class="list-group-item">Mata Pelajaran : <?= $user['mapel']; ?></li>
+					<li class="list-group-item">Deskripsi : <?= $item['descripsion']; ?></li>
+				</ul>
+			</div>
 		</div>
 	</div>
+
+
 
 
 </div>

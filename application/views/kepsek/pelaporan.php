@@ -17,9 +17,8 @@
 			<i class="fa fa-plus fa-sm"></i> Tambah
 		</button>
 		<div class="align-items-center justify-content-between mb-4">
-			<a href="<?= base_url('kepsek/pelaporan/print'); ?>" 
-			class="d-none d-inline-block btn btn btn-dark shadow-sm">
-			<i class="fas fa-print fa-sm text-white-80"></i> Print</a>
+			<a href="<?= base_url('kepsek/pelaporan/print'); ?>" class="d-none d-inline-block btn btn btn-dark shadow-sm">
+				<i class="fas fa-print fa-sm text-white-80"></i> Print</a>
 		</div>
 
 	</div>
@@ -35,9 +34,9 @@
 						<th class="text-center">Periode Laporan</th>
 						<th class="text-center">NIP</th>
 						<th class="text-center">Nama Guru</th>
-						<th class="text-center">Penilaian</th>
+						<th class="text-center">Mapel</th>
 						<th class="text-center">Deskripsi</th>
-						<th class="text-center" width="12%"></th>
+						<th class="text-center" width="12%">action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,8 +47,8 @@
 							<td class="text-center"><?= date('d-m-Y', strtotime($i['periode_laporan'])) ?></td>
 							<td class="text-center"><?= $i['nip'] ?></td>
 							<td class="text-center"><?= $i['username'] ?></td>
-							<td class="text-center"><?= $i['penilaian'] ?></td>
-							<td class="text-center"><?= $i['deskripsi'] ?></td>
+							<td class="text-center"><?= $i['mapel'] ?></td>
+							<td class="text-center"><?= $i['descripsion'] ?></td>
 							<td style="width: 12px;text-align: center;vertical-align: middle;">
 
 								<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit<?= $i['pelaporan_id']; ?>"><i class="fas fa-edit"></i></button>
@@ -77,11 +76,11 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="<?= base_url() . 'admin/pelaporan/tambah'; ?>" method="post" enctype="multipart/form-data">
+					<form action="<?= base_url() . 'kepsek/pelaporan/tambah'; ?>" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="mr-sm-2" for="inlineFormCustomSelect">Nama Guru</label>
 							<input type="hidden" name="pelaporan_id">
-							<select class="custom-select mr-sm-2" name="guru_id" id="guru_id">
+							<select class="custom-select mr-sm-2" name="guru_id">
 								<option selected>Choose...</option>
 								<?php foreach ($relasi as $p) : ?>
 									<option value="<?= $p->id ?>"><?= $p->username ?></option>
@@ -90,16 +89,20 @@
 						</div>
 						<div class="form-group">
 							<label>Periode Laporan</label>
-							<input type="date" name="periode_laporan" value="<?= date('Y-m-d') ?>" class="form-control">
+							<input type="date" name="periode_laporan" class="form-control">
 						</div>
-
 						<div class="form-group">
-							<label>penilaian</label>
-							<input type="Text" name="penilaian" class="form-control">
+							<label class="mr-sm-2" for="inlineFormCustomSelect">Mapel</label>
+							<select class="custom-select mr-sm-2" name="pelajaran_id">
+								<option selected>Choose...</option>
+								<?php foreach ($mapel as $p) : ?>
+									<option value="<?= $p->id_pembelajaran ?>"><?= $p->mapel ?></option>
+								<?php endforeach; ?>
+							</select>
 						</div>
 						<div class="form-group">
 							<label>Deskripsi</label>
-							<input type="text" name="deskripsi" class="form-control">
+							<input type="text" name="descripsion" class="form-control">
 						</div>
 
 						<div class="modal-footer">
@@ -127,7 +130,7 @@
 					</div>
 
 					<div class="modal-body">
-						<form action="<?= base_url() . 'admin/pelaporan/update'; ?>" method="post" enctype="multipart/form-data">
+						<form action="<?= base_url() . 'kepsek/pelaporan/update'; ?>" method="post" enctype="multipart/form-data">
 
 							<div class="form-group">
 								<label>Guru</label>
@@ -139,12 +142,18 @@
 								<input type="date" name="periode_laporan" value="<?= $i['periode_laporan']; ?>" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>Penilaian</label>
-								<input type="text" name="penilaian" value="<?= $i['penilaian']; ?>" class="form-control">
+								<label class="mr-sm-2" for="inlineFormCustomSelect">Mapel</label>
+								<select class="custom-select mr-sm-2" name="pelajaran_id">
+									<option selected value="<?= $i['pelajaran_id']; ?>"><?= $i['mapel']; ?></option>
+									<option>Choose...</option>
+									<?php foreach ($mapel as $p) : ?>
+										<option value="<?= $p->id_pembelajaran ?>"><?= $p->mapel ?></option>
+									<?php endforeach; ?>
+								</select>
 							</div>
 							<div class="form-group">
 								<label>Deskripsi</label>
-								<input type="text" name="deskripsi" value="<?= $i['deskripsi']; ?>" class="form-control">
+								<input type="text" name="descripsion" value="<?= $i['descripsion']; ?>" class="form-control">
 							</div>
 
 							<div class="modal-footer">

@@ -10,7 +10,8 @@ class Model_Pelaporan extends CI_Model
         $this->db->select('*');
 		$this->db->from('pelaporan');
 		$this->db->join('guru', 'pelaporan.guru_id = guru.id');
-		$this->db->join('kehadiran', 'pelaporan.guru_id = kehadiran.kehadiran_id');
+		// $this->db->join('pembelajaran', 'pelaporan.pelajaran_id = pembelajaran.id_pembelajaran');
+		$this->db->order_by('pelaporan.pelaporan_id', 'DESC');
 		$query = $this->db->get();
 		return $query->result_array();
     }
@@ -34,5 +35,12 @@ class Model_Pelaporan extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+	public function countLaporan()
+	{
+		$this->db->select('*');
+        $this->db->from('pelaporan');
+        return $this->db->get_where()->num_rows();
+	}
 
 }

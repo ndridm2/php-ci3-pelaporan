@@ -21,21 +21,26 @@ class Kehadiran extends CI_Controller
 
 		$data['item'] = $this->model_kehadiran->tampil_data();
 		$data['relasi'] = $this->db->get('guru')->result();
-		
+
 		$date = date('Y-m-d');
 
 		// query menampilkan data kehadiran dari guru_id => $data['user]['id] order tanggal
 		$data['kehadiran'] = $this->db->query("SELECT * FROM kehadiran
-		WHERE guru_id = '" . $data['user']['id'] . "' ORDER BY tanggal DESC")->
-		row_array();
+		WHERE guru_id = '" . $data['user']['id'] . "' ORDER BY tanggal DESC")->row_array();
+
 		if ($data['kehadiran']) {
 			$data['kehadiran']['tanggal'];
 			$data['kehadiran']['status'];
+
+			// ubah status jika tanggal telah berganti
+			if ($data['kehadiran']['tanggal'] != $date) {
+				$data['kehadiran']['status'] = 'Segera Masukkan Kehadiran Anda!';
+			}
+
 		} else {
 			$data['kehadiran'] = [
 				'tanggal'	=> $date,
 				'status'	=> 'Segera Masukkan Kehadiran Anda!',
-				// ... other default values
 			];
 		}
 

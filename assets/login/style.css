@@ -261,3 +261,18 @@ body {
     font-size: 14px;
   }
 }
+
+.text-danger {
+	color: red;
+}
+
+/* text-danger color red */
+/* text-success color green */
+/* text-warning color yellow */
+/* text-info color blue */
+/* text-primary color blue */
+/* text-muted color gray */
+/* text-white color white */
+/* text-black color black */
+
+

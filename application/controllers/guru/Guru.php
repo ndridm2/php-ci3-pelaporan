@@ -21,7 +21,7 @@ class Guru extends CI_Controller
 		$data['active_link'] = $this->uri->segment(2);
 		$data['user'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 		
-		$data['item'] = $this->model_guru->tampil_dataguru()->result_array();
+		$data['item'] = $this->model_guru->tampil_dataguru();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('guru/sidebar');
@@ -67,9 +67,9 @@ class Guru extends CI_Controller
 		$nip				= $this->input->post('nip');
 		$username       	= $this->input->post('username');
 		// $email       		= $this->input->post('email');
-		$alamat       		= $this->input->post('alamat');
-		$hp       			= $this->input->post('hp');
+		$mapel       		= $this->input->post('mapel');
 		$tanggal_lahir      = $this->input->post('tanggal_lahir');
+		$jenis_kelamin      = $this->input->post('jenis_kelamin');
 		$pendidikan       	= $this->input->post('pendidikan');
 		$password       	= $this->input->post('password');
 		$role       		= $this->input->post('role');
@@ -79,9 +79,9 @@ class Guru extends CI_Controller
 			'nip'        		=> $nip,
 			'username'        	=> $username,
 			// 'email'        		=> $email,
-			'alamat'        	=> $alamat,
-			'hp'        		=> $hp,
+			'mapel'        		=> $mapel,
 			'tanggal_lahir'     => $tanggal_lahir,
+			'jenis_kelamin'     => $jenis_kelamin,
 			'pendidikan'        => $pendidikan,
 			'password'        	=> $password,
 			'role'        		=> $role,

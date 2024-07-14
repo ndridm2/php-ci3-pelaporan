@@ -9,17 +9,16 @@
 	<div class="mt-5"></div>
 
 	<div class="row ml-1 mb-4">
-        <!-- btn add -->
+		<!-- btn add -->
 		<button class="btn btn-primary mb-4 mr-3" data-toggle="modal" data-target="#tambah_data">
 			<i class="fa fa-plus fa-sm"></i> Tambah
 		</button>
 		<!-- end -->
 		<div class="align-items-center justify-content-between mb-4">
-			<a href="<?= base_url('admin/pelaporan/print'); ?>" 
-			class="d-none d-inline-block btn btn btn-dark shadow-sm">
-			<i class="fas fa-print fa-sm text-white-80"></i> Print</a>
+			<a href="<?= base_url('admin/pelaporan/print'); ?>" class="d-none d-inline-block btn btn btn-dark shadow-sm">
+				<i class="fas fa-print fa-sm text-white-80"></i> Print</a>
 		</div>
-    </div>
+	</div>
 
 	<!-- table -->
 	<div class="card shadow p-4 col-xl-12 col-md-6 mb-10">
@@ -31,7 +30,7 @@
 						<th class="text-center">Periode Laporan</th>
 						<th class="text-center">NIP</th>
 						<th class="text-center">Nama Guru</th>
-						<th class="text-center">Penilaian</th>
+						<th class="text-center">Mapel</th>
 						<th class="text-center">Deskripsi</th>
 						<th class="text-center" width="8%"></th>
 					</tr>
@@ -44,8 +43,8 @@
 							<td class="text-center"><?= date('d-m-Y', strtotime($i['periode_laporan'])) ?></td>
 							<td class="text-center"><?= $i['nip'] ?></td>
 							<td class="text-center"><?= $i['username'] ?></td>
-							<td class="text-center"><?= $i['penilaian'] ?></td>
-							<td class="text-center"><?= $i['deskripsi'] ?></td>
+							<td class="text-center"><?= $i['mapel'] ?></td>
+							<td class="text-center"><?= $i['descripsion'] ?></td>
 							<td style="width: 8px;text-align: center;vertical-align: middle;">
 
 								<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit<?= $i['pelaporan_id']; ?>"><i class="fas fa-edit"></i></button>
@@ -73,28 +72,32 @@
 				</div>
 				<div class="modal-body">
 					<form action="<?= base_url() . 'admin/pelaporan/tambah'; ?>" method="post" enctype="multipart/form-data">
-					<div class="form-group">
+						<div class="form-group">
 							<label class="mr-sm-2" for="inlineFormCustomSelect">Nama Guru</label>
 							<input type="hidden" name="pelaporan_id">
 							<select class="custom-select mr-sm-2" name="guru_id" id="guru_id">
 								<option selected>Choose...</option>
-								<?php foreach ($relasi as $p): ?>
-								<option value="<?= $p->id ?>"><?= $p->username ?></option>
-							<?php endforeach; ?>
-							</select>			
+								<?php foreach ($relasi as $p) : ?>
+									<option value="<?= $p->id ?>"><?= $p->username ?></option>
+								<?php endforeach; ?>
+							</select>
 						</div>
 						<div class="form-group">
 							<label>Periode Laporan</label>
 							<input type="date" name="periode_laporan" class="form-control">
 						</div>
-
 						<div class="form-group">
-							<label>penilaian</label>
-							<input type="Text" name="penilaian" class="form-control">
+							<label class="mr-sm-2" for="inlineFormCustomSelect">Mapel</label>
+							<select class="custom-select mr-sm-2" name="pelajaran_id">
+								<option selected>Choose...</option>
+								<?php foreach ($mapel as $p) : ?>
+									<option value="<?= $p->id_pembelajaran ?>"><?= $p->mapel ?></option>
+								<?php endforeach; ?>
+							</select>
 						</div>
 						<div class="form-group">
 							<label>Deskripsi</label>
-							<input type="text" name="deskripsi" class="form-control">
+							<input type="text" name="descripsion" class="form-control">
 						</div>
 
 						<div class="modal-footer">
@@ -111,49 +114,55 @@
 
 	<!-- modal edit -->
 	<?php foreach ($item as $i) : ?>
-        <div class="modal fade" id="edit<?= $i['pelaporan_id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+		<div class="modal fade" id="edit<?= $i['pelaporan_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 
-                    <div class="modal-body">
-                        <form action="<?= base_url() . 'admin/pelaporan/update'; ?>" method="post" enctype="multipart/form-data">
+					<div class="modal-body">
+						<form action="<?= base_url() . 'admin/pelaporan/update'; ?>" method="post" enctype="multipart/form-data">
 
-                            <div class="form-group">
-                                <label>Guru</label>
+							<div class="form-group">
+								<label>Guru</label>
 								<input type="hidden" name="pelaporan_id" value="<?= $i['pelaporan_id']; ?>">
-                                <input type="text" name="guru_id" value="<?= $i['guru_id']; ?> - <?= $i['username']; ?>" class="form-control" readonly=true>
-                            </div>
-                            <div class="form-group">
-                                <label>Periode Laporan</label>
-                                <input type="date" name="periode_laporan" value="<?= $i['periode_laporan']; ?>" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Penilaian</label>
-                                <input type="text" name="penilaian" value="<?= $i['penilaian']; ?>" class="form-control" >
-                            </div>
-                            <div class="form-group">
-                                <label>Deskripsi</label>
-                                <input type="text" name="deskripsi" value="<?= $i['deskripsi']; ?>" class="form-control" >
-                            </div>
-            
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary col-sm-4">Update Data</button>
+								<input type="text" name="guru_id" value="<?= $i['guru_id']; ?> - <?= $i['username']; ?>" class="form-control" readonly=true>
+							</div>
+							<div class="form-group">
+								<label>Periode Laporan</label>
+								<input type="date" name="periode_laporan" value="<?= $i['periode_laporan']; ?>" class="form-control">
+							</div>
+							<div class="form-group">
+								<label class="mr-sm-2" for="inlineFormCustomSelect">Mapel</label>
+								<select class="custom-select mr-sm-2" name="pelajaran_id">
+									<option selected value="<?= $i['pelajaran_id']; ?>"><?= $i['mapel']; ?></option>
+									<option>Choose...</option>
+									<?php foreach ($mapel as $p) : ?>
+										<option value="<?= $p->id_pembelajaran ?>"><?= $p->mapel ?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Deskripsi</label>
+								<input type="text" name="descripsion" value="<?= $i['descripsion']; ?>" class="form-control">
+							</div>
+
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-primary col-sm-4">Update Data</button>
 								<button type="button" data-dismiss="modal" class="btn btn-danger col-sm-4">cancel</button>
-                            </div>
-                        </form>
+							</div>
+						</form>
 
-                    </div>
+					</div>
 
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	<?php endforeach; ?>
 	<!-- end -->
 
 </div>

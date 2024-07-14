@@ -13,7 +13,7 @@
 	</div>
 
 	<!-- btn add -->
-	<button class="btn btn-sm btn-warning p-2" data-toggle="modal" data-target="#edit<?= $user['id'];?>"><i class="fas fa-plus fa-sm"></i> Update Data
+	<button class="btn btn-sm btn-primary p-2" data-toggle="modal" data-target="#edit<?= $user['id'];?>"><i class="fas fa-plus fa-sm"></i> Update Data
 	</button>
 	<div class="mt-4"></div>
 	<!-- end -->
@@ -28,8 +28,8 @@
 				<li class="list-group-item">NIP : <?= $user['nip']; ?> </li>
 				<li class="list-group-item">Nama : <?= $user['username']; ?></li>
 				<li class="list-group-item">Tanggal Lahir : <?= $user['tanggal_lahir']; ?></li>
-				<li class="list-group-item">Alamat : <?= $user['alamat']; ?></li>
-				<li class="list-group-item">Telepon : <?= $user['hp']; ?></li>
+				<li class="list-group-item">Jenis Kelamin : <?= $user['jenis_kelamin']; ?></li>
+				<li class="list-group-item">Mata Pelajaran : <?= $user['mapel']; ?></li>
 				<li class="list-group-item">Pendidikan: <?= $user['pendidikan']; ?></li>
 			</ul>
 		</div>
@@ -62,16 +62,16 @@
 								<input type="text" name="username" value="<?= $i['username']; ?>" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>Alamat</label>
-								<input type="Text" name="alamat" value="<?= $i['alamat']; ?>" class="form-control">
-							</div>
-							<div class="form-group">
-								<label>Telepon</label>
-								<input type="number" name="hp" value="<?= $i['hp']; ?>" class="form-control">
-							</div>
-							<div class="form-group">
 								<label>Tanggal Lahir</label>
 								<input type="date" name="tanggal_lahir" value="<?= $i['tanggal_lahir']; ?>" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Jenis Kelamin</label>
+								<input type="text" name="jenis_kelamin" value="<?= $i['jenis_kelamin']; ?>" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Mata Pelajaran</label>
+								<input type="text" name="mapel" value="<?= $i['mapel']; ?>" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>Pendidikan Terakhir</label>

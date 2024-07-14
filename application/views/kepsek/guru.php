@@ -22,8 +22,9 @@
 						<th class="text-center">NIP</th>
 						<th class="text-center">Nama Guru</th>
 						<th class="text-center">Tanggal Lahir</th>
-						<th class="text-center">Alamat</th>
-						<th class="text-center" width="8%"></th>
+						<th class="text-center">Jenis Kelamin</th>
+						<th class="text-center">Mata Pelajaran</th>
+						<th class="text-center" width="8%">action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,7 +35,8 @@
 							<td class="text-center"><?= $i['nip'] ?></td>
 							<td class="text-center"><?= $i['username'] ?></td>
 							<td class="text-center"><?= date('d-m-Y', strtotime($i['tanggal_lahir'])) ?></td>
-							<td class="text-center"><?= $i['alamat'] ?></td>
+							<td class="text-center"><?= $i['jenis_kelamin'] ?></td>
+							<td class="text-center"><?= $i['mapel'] ?></td>
 							<td style="width: 8px;text-align: center;vertical-align: middle;">
 
 								<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#read<?= $i['id']; ?>"><i class="fas fa-search"></i></button>
@@ -73,16 +75,16 @@
 							<input type="text" name="username" value="<?= $i['username']; ?>" class="form-control" readonly>
 						</div>
 						<div class="form-group">
-							<label>Alamat</label>
-							<input type="Text" name="alamat" value="<?= $i['alamat']; ?>" class="form-control" readonly>
-						</div>
-						<div class="form-group">
-							<label>Telepon</label>
-							<input type="text" name="hp" value="<?= $i['hp']; ?>" class="form-control" readonly>
-						</div>
-						<div class="form-group">
 							<label>Tanggal Lahir</label>
 							<input type="text" name="tanggal_lahir" value="<?= $i['tanggal_lahir']; ?>" class="form-control" readonly>
+						</div>
+						<div class="form-group">
+							<label>Jenis Kelamin</label>
+							<input type="Text" name="jenis_kelamin" value="<?= $i['jenis_kelamin']; ?>" class="form-control" readonly>
+						</div>
+						<div class="form-group">
+							<label>Mata Pelajaran</label>
+							<input type="text" name="mapel" value="<?= $i['mapel']; ?>" class="form-control" readonly>
 						</div>
 						<div class="form-group">
 							<label>Pendidikan Terakhir</label>

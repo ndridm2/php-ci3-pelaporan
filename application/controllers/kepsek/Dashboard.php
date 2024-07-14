@@ -22,6 +22,7 @@ class Dashboard extends CI_Controller
         $data['item'] = $this->model_kehadiran->getKehadiranGuru();
         $data['itemGuru'] = $this->model_guru->countGuru();
         $data['itemKehadiran'] = $this->model_kehadiran->countKehadiran();
+		$data['itemLaporan'] = $this->model_pelaporan->countLaporan();
 
         $this->load->view('templates/header', $data);
         $this->load->view('kepsek/sidebar');

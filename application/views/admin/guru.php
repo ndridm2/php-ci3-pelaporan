@@ -15,9 +15,8 @@
 		</button>
 		<!-- end -->
 		<div class="align-items-center justify-content-between mb-4">
-			<a href="<?= base_url('admin/guru/print'); ?>" 
-			class="d-none d-inline-block btn btn btn-dark shadow-sm">
-			<i class="fas fa-print fa-sm text-white-80"></i> Print</a>
+			<a href="<?= base_url('admin/guru/print'); ?>" class="d-none d-inline-block btn btn btn-dark shadow-sm">
+				<i class="fas fa-print fa-sm text-white-80"></i> Print</a>
 		</div>
 	</div>
 
@@ -31,9 +30,9 @@
 						<th class="text-center">NIP</th>
 						<th class="text-center">Nama Guru</th>
 						<th class="text-center">Tanggal Lahir</th>
+						<th class="text-center">Jenis Kelamin</th>
 						<th class="text-center">Pendidikan</th>
-						<th class="text-center">Alamat</th>
-						<th class="text-center">HP</th>
+						<th class="text-center">Mata Pelajaran</th>
 						<th class="text-center" width="8%"></th>
 					</tr>
 				</thead>
@@ -45,9 +44,9 @@
 							<td class="text-center"><?= $i['nip'] ?></td>
 							<td class="text-center"><?= $i['username'] ?></td>
 							<td class="text-center"><?= date('d-m-Y', strtotime($i['tanggal_lahir'])) ?></td>
+							<td class="text-center"><?= $i['jenis_kelamin'] ?></td>
 							<td class="text-center"><?= $i['pendidikan'] ?></td>
-							<td class="text-center"><?= $i['alamat'] ?></td>
-							<td class="text-center"><?= $i['hp'] ?></td>
+							<td class="text-center"><?= $i['mapel'] ?></td>
 							<td style="width: 8px;text-align: center;vertical-align: middle;">
 
 								<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit<?= $i['id']; ?>"><i class="fas fa-edit"></i></button>
@@ -102,16 +101,16 @@
 							<input type="date" name="tanggal_lahir" class="form-control" required>
 						</div>
 						<div class="form-group">
+							<label>Jenis Kelamin</label>
+							<input type="text" name="jenis_kelamin" class="form-control" required>
+						</div>
+						<div class="form-group">
 							<label>Pendidikan</label>
 							<input type="text" name="pendidikan" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Alamat</label>
-							<input type="text" name="alamat" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Telepon</label>
-							<input type="text" name="hp" class="form-control" required>
+							<label>Mata Pelajaran</label>
+							<input type="text" name="mapel" class="form-control" required>
 						</div>
 
 						<div class="modal-footer">
@@ -153,16 +152,16 @@
 								<input type="text" name="username" value="<?= $i['username']; ?>" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>Alamat</label>
-								<input type="Text" name="alamat" value="<?= $i['alamat']; ?>" class="form-control">
-							</div>
-							<div class="form-group">
-								<label>Telepon</label>
-								<input type="number" name="hp" value="<?= $i['hp']; ?>" class="form-control">
-							</div>
-							<div class="form-group">
 								<label>Tanggal Lahir</label>
 								<input type="date" name="tanggal_lahir" value="<?= $i['tanggal_lahir']; ?>" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Jenis Kelamin</label>
+								<input type="Text" name="jenis_kelamin" value="<?= $i['jenis_kelamin']; ?>" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Mata Pelajaran</label>
+								<input type="text" name="mapel" value="<?= $i['mapel']; ?>" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>Pendidikan Terakhir</label>

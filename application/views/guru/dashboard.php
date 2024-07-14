@@ -15,7 +15,7 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-white mb-1">Data Guru</div>
-							<div class="h5 mb-0 font-weight-bold text-white"></div>
+							<div class="h5 mb-0 font-weight-bold text-white"><?= $user['username'] ?></div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-user fa-2x text-white"></i>
@@ -32,7 +32,7 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-white mb-1">Data Kehadiran</div>
-							<div class="h5 mb-0 font-weight-bold text-white"></div>
+							<div class="h5 mb-0 font-weight-bold text-white"><?= $itemKehadiran ?></div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-users fa-2x text-white"></i>
@@ -48,7 +48,7 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-white mb-1">Pelaporan Kinerja</div>
-							<div class="h5 mb-0 font-weight-bold text-white">1</div>
+							<div class="h5 mb-0 font-weight-bold text-white"><?= $itemLaporan ?></div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-list fa-2x text-white"></i>
@@ -128,6 +128,7 @@
 							<tr>
 								<th class="text-center" width="4%">No</th>
 								<th class="text-center">Jam</th>
+								<th class="text-center">Hari</th>
 								<th class="text-center">Pembelajaran ID</th>
 								<th class="text-center">MAPEL</th>
 								<th class="text-center">Deskripsi</th>
@@ -139,6 +140,7 @@
                         <tr>
                             <td class="text-center"><?= $no++ ?></td>
                             <td class="text-center"><?= $i['jam_pelajaran'] ?></td>
+                            <td class="text-center"><?= $i['hari'] ?></td>
                             <td class="text-center"><?= $i['pembelajaran_id'] ?></td>
                             <td class="text-center"><?= $i['mapel'] ?></td>
                             <td class="text-center"><?= $i['deskripsi'] ?></td>

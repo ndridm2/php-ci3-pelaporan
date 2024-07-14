@@ -4,12 +4,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Model_Pembelajaran extends CI_Model
 {
 
-    // tampil tampil produk
+    // tampil tampil
     public function tampil_data()
     {
         return $this->db->get('pembelajaran');
         return $this->db->get()->num_rows();
     }
+
+	// get all data
+	public function tampil_all_data()
+    {
+        $this->db->select('*');
+		$this->db->from('pembelajaran');
+		$this->db->join('guru', 'pembelajaran.guru_id = guru.id');
+		$this->db->order_by('guru_id', 'DESC');
+		$query = $this->db->get();
+		return $query->result_array();
+    }
+
     // tambah
     public function tambah_data($data, $table)
     {
@@ -35,5 +47,7 @@ class Model_Pembelajaran extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+	
 
 }

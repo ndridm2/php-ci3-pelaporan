@@ -20,14 +20,14 @@
 
 		<div class="row mt-3">
 			<div class="col-6">
-				<p>Nama: Bambang Raharjo</p>
+				<p>Nama: Staff TU Sekolah</p>
 				<p>NIP: 040815001235</p>
-				<p>Jabatan: Staff Sekolah</p>
+				<p>Jabatan:pegawai</p>
 				<p>Periode: <?= date('M Y') ?></p>
 			</div>
 
 			<div class="col-6 text-end">
-				<p>Kalola Data kehadiran</p>
+				<p>Laporan Data kehadiran</p>
 				<p><?= date('d m Y - H:i'); ?></p>
 			</div>
 		</div>

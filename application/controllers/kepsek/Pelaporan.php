@@ -23,6 +23,7 @@ class Pelaporan extends CI_Controller
 
         $data['item']   = $this->model_pelaporan->tampil_data();
 		$data['relasi'] = $this->db->get_where('guru', ['role' => 3])->result();
+		$data['mapel'] = $this->db->get('pembelajaran')->result();
 
         $this->load->view('templates/header', $data);
         $this->load->view('kepsek/sidebar');
@@ -35,17 +36,17 @@ class Pelaporan extends CI_Controller
     {
         $pelaporan_id         		= $this->input->post('pelaporan_id');
         $guru_id      				= $this->input->post('guru_id');
+        $pelajaran_id      			= $this->input->post('pelajaran_id');
         $periode_laporan         	= $this->input->post('periode_laporan');
-        $penilaian      			= $this->input->post('penilaian');
-        $deskripsi          		= $this->input->post('deskripsi');
+        $descripsion         		= $this->input->post('descripsion');
 
-        $data = array(
+       $data = array(
             'pelaporan_id'    		=> $pelaporan_id,
             'guru_id'   			=> $guru_id,
+            'pelajaran_id'   		=> $pelajaran_id,
             'periode_laporan'      	=> $periode_laporan,
-            'penilaian'   			=> $penilaian,
-            'deskripsi'       		=> $deskripsi,
-        );
+            'descripsion'      		=> $descripsion,
+    );
         $this->model_pelaporan->tambah_data($data, 'pelaporan');
         redirect('kepsek/pelaporan/index');
     }
@@ -54,17 +55,17 @@ class Pelaporan extends CI_Controller
     {
         $pelaporan_id         		= $this->input->post('pelaporan_id');
         $guru_id      				= $this->input->post('guru_id');
+		$pelajaran_id      			= $this->input->post('pelajaran_id');
         $periode_laporan         	= $this->input->post('periode_laporan');
-        $penilaian      			= $this->input->post('penilaian');
-        $deskripsi          		= $this->input->post('deskripsi');
+        $descripsion         		= $this->input->post('descripsion');
 
-        $data = array(
+       $data = array(
 			'pelaporan_id'    		=> $pelaporan_id,
             'guru_id'   			=> $guru_id,
+			'pelajaran_id'   		=> $pelajaran_id,
             'periode_laporan'      	=> $periode_laporan,
-            'penilaian'   			=> $penilaian,
-            'deskripsi'       		=> $deskripsi,
-        );
+            'descripsion'      		=> $descripsion,
+    );
 
         $where = array(
 			'pelaporan_id '   => $pelaporan_id 
